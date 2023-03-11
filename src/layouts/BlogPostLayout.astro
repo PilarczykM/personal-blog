@@ -1,0 +1,30 @@
+---
+import PostHeader from "@/components/PostHeader.astro";
+import { BlogPostFrontmatter, siteMetadata } from "@/data";
+
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  frontmatter: { description, author, category, date, image, title },
+} = Astro.props as BlogPostFrontmatter;
+---
+
+<BaseLayout
+  title={`Blog Post - ${siteMetadata.title}`}
+  description={description}
+>
+  <PostHeader
+    author={author}
+    category={category}
+    date={date}
+    image={image}
+    title={title}
+  />
+
+  <div class="post-content">
+    <div class="content">
+      <slot />
+    </div>
+    <div class="sidebar"></div>
+  </div>
+</BaseLayout>
