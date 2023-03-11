@@ -1,0 +1,25 @@
+---
+import PostCard from "@/components/PostCard.astro";
+import { siteMetadata } from "@/data";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("./**/*.md");
+---
+
+<BaseLayout title={`Blog - ${siteMetadata.title}`}>
+  <section class="container" aria-label="New Blog Posts">
+    <h1 class="h1">New Blog Posts</h1>
+    <div class="post-container">
+      {
+        allPosts.length > 0 &&
+          allPosts.map((post) => (
+            <PostCard
+              frontmatter={post.frontmatter}
+              tagType="h2"
+              url={post.url}
+            />
+          ))
+      }
+    </div>
+  </section>
+</BaseLayout>
