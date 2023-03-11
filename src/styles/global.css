@@ -70,14 +70,10 @@ h6 {
   --shadow-sm: 0.2px 0.5px 0.6px hsl(var(--_shadow) / var(--_shadow-strength)),
     0.3px 0.8px 1px -1.2px hsl(var(--_shadow) / var(--_shadow-strength)),
     0.8px 1.9px 2.3px -2.5px hsl(var(--_shadow) / var(--_shadow-strength));
-  --shadow-md: 0.2px 0.5px 0.6px
-      hsl(var(--_shadow) / calc(var(--_shadow-strength) + 0.04)),
-    0.6px 1.5px 1.8px -0.8px hsl(var(--_shadow) /
-          calc(var(--_shadow-strength) + 0.04)),
-    1.6px 3.8px 4.6px -1.7px hsl(var(--_shadow) /
-          calc(var(--_shadow-strength) + 0.04)),
-    3.9px 9.3px 11.3px -2.5px hsl(var(--_shadow) /
-          calc(var(--_shadow-strength) + 0.04));
+  --shadow-md: 0.2px 0.5px 0.6px hsl(var(--_shadow) / calc(var(--_shadow-strength) + 0.04)),
+    0.6px 1.5px 1.8px -0.8px hsl(var(--_shadow) / calc(var(--_shadow-strength) + 0.04)),
+    1.6px 3.8px 4.6px -1.7px hsl(var(--_shadow) / calc(var(--_shadow-strength) + 0.04)),
+    3.9px 9.3px 11.3px -2.5px hsl(var(--_shadow) / calc(var(--_shadow-strength) + 0.04));
   --shadow-lg: 0.2px 0.5px 0.6px hsl(var(--_shadow) / var(--_shadow-strength)),
     1.1px 2.7px 3.3px -0.4px hsl(var(--_shadow) / var(--_shadow-strength)),
     2.1px 5px 6.1px -0.7px hsl(var(--_shadow) / var(--_shadow-strength)),
@@ -143,6 +139,7 @@ h6 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *:before,
   *:after {
@@ -301,8 +298,7 @@ button:focus-visible {
   gap: var(--space-2xs);
   width: -moz-fit-content;
   width: fit-content;
-  padding: calc(max(0.31rem, min(calc(0.18rem + 0.65vw), 0.69rem)) * 0.75)
-    max(0.88rem, min(calc(0.7rem + 0.87vw), 1.38rem));
+  padding: calc(max(0.31rem, min(calc(0.18rem + 0.65vw), 0.69rem)) * 0.75) max(0.88rem, min(calc(0.7rem + 0.87vw), 1.38rem));
   padding: calc(var(--space-2xs) * 0.75) var(--space-sm);
   background-color: var(--fill);
   color: var(--type);
@@ -510,7 +506,6 @@ button:focus-visible {
 .about img {
   border-radius: 100vmax;
   border-radius: var(--radius-full);
-  height: 400px;
   width: min(300px, 100%);
   box-shadow: 0.2px 0.5px 0.6px #8186bb40, 1.1px 2.7px 3.3px -0.4px #8186bb40,
     2.1px 5px 6.1px -0.7px #8186bb40, 3.5px 8.3px 10.1px -1.1px #8186bb40,

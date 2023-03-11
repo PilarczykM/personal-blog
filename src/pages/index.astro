@@ -1,8 +1,9 @@
 ---
+import { siteMetadata } from "@/data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Marcin Pilarczyk">
+<BaseLayout title={`${siteMetadata.title}`}>
   <main>
     <h1>Welcome to <span class="text-gradient">Astro</span></h1>
   </main>
