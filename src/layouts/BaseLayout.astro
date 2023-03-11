@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
+
 export type Props = {
   title?: string;
   description?: string;
@@ -27,6 +30,8 @@ const { title = "Marcin Pilarczyk", description = "My personal blog" } =
     />
   </head>
   <body>
+    <Nav />
     <slot />
+    <Footer />
   </body>
 </html>
