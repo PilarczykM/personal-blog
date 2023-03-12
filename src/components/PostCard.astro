@@ -5,7 +5,16 @@ import Link from "./Link.astro";
 
 type Props = {
   url: string | undefined;
-  frontmatter: { [key: string]: undefined };
+  frontmatter:
+    | { [key: string]: undefined }
+    | {
+        category: "";
+        image: { src: ""; alt: "" };
+        date: "";
+        author: "";
+        description: "";
+        title: "";
+      };
   tagType: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
