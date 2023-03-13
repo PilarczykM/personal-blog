@@ -1,10 +1,46 @@
 ---
+import Link from "@/components/Link.astro";
+import PostCard from "@/components/PostCard.astro";
 import { siteMetadata } from "@/data";
+import { formatBlogPosts } from "@/js/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("./**/*.md");
+
+const filteredPosts = formatBlogPosts(allPosts, { limit: 3 });
 ---
 
 <BaseLayout title={`${siteMetadata.title}`}>
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-  </main>
+  <section class="about container" aria-label="About Me">
+    <img src="/images/headshot.jpg" alt="My headshot" />
+    <div class="content">
+      <h1 class="h1">Marcin Pilarczyk</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores non
+        aliquid alias quidem fugiat itaque, necessitatibus vero sequi corrupti
+        at suscipit quos labore hic, porro reprehenderit accusantium culpa
+        aliquam esse?
+      </p>
+      <Link
+        href="/about/"
+        text="About me"
+        style="primary"
+      />
+    </div>
+  </section>
+  <section class="container" aria-label="New Blog Posts">
+    <h2 class="h1">New Blog Posts</h2>
+    <div class="post-container">
+      {
+        filteredPosts.length > 0 &&
+          filteredPosts.map((post) => (
+            <PostCard
+              frontmatter={post.frontmatter}
+              tagType="h3"
+              url={post.url}
+            />
+          ))
+      }
+    </div>
+  </section>
 </BaseLayout>
