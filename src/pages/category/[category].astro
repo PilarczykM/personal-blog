@@ -5,33 +5,22 @@ import { siteMetadata } from "@/data";
 import PostCard from "@/components/PostCard.astro";
 
 export async function getStaticPaths() {
-  return [
-    {
-      params: { category: slugify("Docs") },
-      props: { name: "Docs" },
-    },
-    {
-      params: { category: slugify("Astro") },
-      props: { name: "Astro" },
-    },
-    {
-      params: { category: slugify("General") },
-      props: { name: "General" },
-    },
-    {
-      params: { category: slugify("CSS") },
-      props: { name: "CSS" },
-    },
+  const allPosts = await Astro.glob("../**/*.md");
+  const filteredPosts = formatBlogPosts(allPosts);
+  const allCategory = [
+    ...new Set(filteredPosts.map((post) => post.frontmatter.category).flat()),
   ];
+  return allCategory.map((category) => {
+    const cateogryPosts = filteredPosts.filter(
+      (post) => post.frontmatter.category === category
+    );
+    return {
+      params: { category: slugify(category) },
+      props: { name: category, posts: cateogryPosts },
+    };
+  });
 }
-const { category } = Astro.params;
-const { name } = Astro.props;
-const allPosts = await Astro.glob("../**/*.md");
-
-const filteredPosts = formatBlogPosts(allPosts);
-const categoryPosts = filteredPosts.filter(
-  (post) => slugify(post.frontmatter.category) == slugify(category)
-);
+const { name, posts } = Astro.props;
 ---
 
 <BaseLayout title={`${name} - ${siteMetadata.title}`}>
@@ -39,8 +28,8 @@ const categoryPosts = filteredPosts.filter(
     <h1 class="h1">Posts about <span>{name}</span></h1>
     <div class="post-container">
       {
-        categoryPosts.length > 0 &&
-          categoryPosts.map((post) => (
+        posts.length > 0 &&
+          posts.map((post) => (
             <PostCard
               frontmatter={post.frontmatter}
               tagType="h2"
