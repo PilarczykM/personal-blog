@@ -6,7 +6,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const allPosts = await Astro.glob("./**/*.md");
 
-const filteredPosts = formatBlogPosts(allPosts)
+const filteredPosts = formatBlogPosts(allPosts);
 ---
 
 <BaseLayout title={`Blog - ${siteMetadata.title}`}>
@@ -15,7 +15,7 @@ const filteredPosts = formatBlogPosts(allPosts)
     <div class="post-container">
       {
         filteredPosts.length > 0 &&
-        filteredPosts.map((post) => (
+          filteredPosts.map((post) => (
             <PostCard
               frontmatter={post.frontmatter}
               tagType="h2"

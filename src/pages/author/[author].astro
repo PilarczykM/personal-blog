@@ -1,9 +1,8 @@
 ---
-import { formatBlogPosts, slugify } from "@/js/utils";
-import { siteMetadata } from "@/data";
-
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import PostCard from "@/components/PostCard.astro";
+import { siteMetadata } from "@/data";
+import { formatBlogPosts, slugify } from "@/js/utils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob("../**/*.md");
@@ -14,7 +13,7 @@ export async function getStaticPaths() {
 
   return allAthors.map((author) => {
     const authorPosts = filteredPosts.filter(
-      (post) => post.frontmatter.author === author
+      (post) => post.frontmatter.author === author,
     );
     return {
       params: { author: slugify(author) },
@@ -25,7 +24,6 @@ export async function getStaticPaths() {
     };
   });
 }
-const { author } = Astro.params;
 const { authorName, posts } = Astro.props;
 ---
 

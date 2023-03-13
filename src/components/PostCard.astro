@@ -32,7 +32,7 @@ const Tag = tagType;
     <a href={`/category/${slugify(category)}/`} class="badge">{category}</a>
   </small>
   <a href={url} aria-hidden="true" tabindex="-1">
-    <img src={image.src} alt={image.alt} height="200" width="400" />
+    {image && <img src={image.src} alt={image.alt} height="200" width="400" />}
   </a>
   <div class="content">
     <div>
@@ -46,6 +46,6 @@ const Tag = tagType;
       </small>
     </div>
     <p>{description}</p>
-    <Link href={url} text="Read Post" style="secondary" />
+    {url && <Link href={url} text="Read Post" style="secondary" />}
   </div>
 </article>
