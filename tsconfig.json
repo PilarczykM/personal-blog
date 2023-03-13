@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./src/",
     "paths": { "@/*": ["*"], "*": [""] },
-    "incremental": true
+    "incremental": true,
+    "strictNullChecks": true
   },
   "files.exclude": {
     "**/node_modules": true
