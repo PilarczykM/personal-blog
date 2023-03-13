@@ -1,9 +1,12 @@
 ---
 import PostCard from "@/components/PostCard.astro";
 import { siteMetadata } from "@/data";
+import { formatBlogPosts } from "@/js/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const allPosts = await Astro.glob("./**/*.md");
+
+const filteredPosts = formatBlogPosts(allPosts)
 ---
 
 <BaseLayout title={`Blog - ${siteMetadata.title}`}>
@@ -11,8 +14,8 @@ const allPosts = await Astro.glob("./**/*.md");
     <h1 class="h1">New Blog Posts</h1>
     <div class="post-container">
       {
-        allPosts.length > 0 &&
-          allPosts.map((post) => (
+        filteredPosts.length > 0 &&
+        filteredPosts.map((post) => (
             <PostCard
               frontmatter={post.frontmatter}
               tagType="h2"
