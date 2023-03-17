@@ -11,10 +11,13 @@ const filteredPosts = formatBlogPosts(allPosts);
 
 const { category, title } = Astro.props as Props;
 
-const allRelatedPosts = filteredPosts.filter(
-  (post) =>
-    post.frontmatter.category == category && post.frontmatter.title != title,
-).slice(0, 10);
+const allRelatedPosts = filteredPosts
+  .filter(
+    (post) =>
+      post.frontmatter.category === category &&
+      post.frontmatter.title !== title,
+  )
+  .slice(0, 10);
 ---
 
 <ul class="categories">
