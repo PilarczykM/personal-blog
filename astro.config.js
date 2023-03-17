@@ -1,9 +1,11 @@
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
+// https://astro.build/config
+import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), prefetch(), tailwind()],
+  integrations: [mdx(), prefetch(), tailwind(), sitemap()],
 });
