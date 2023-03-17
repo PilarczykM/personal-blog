@@ -6,7 +6,6 @@ import { formatBlogPosts } from "@/js/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const allPosts = await Astro.glob("./**/*.md");
-
 const filteredPosts = formatBlogPosts(allPosts, { limit: 3 });
 ---
 

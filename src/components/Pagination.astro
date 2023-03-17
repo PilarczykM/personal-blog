@@ -1,0 +1,43 @@
+---
+import Link from "./Link.astro";
+
+type Props = {
+  prevUrl: string;
+  nextUrl: string;
+};
+
+const { prevUrl, nextUrl } = Astro.props as Props;
+---
+
+<nav aria-label="Blog pages">
+  {
+    prevUrl && (
+      <Link
+        text="Previous"
+        href={prevUrl}
+        style="primary"
+        borderVisible={true}
+        isFilled={false}
+        icon={{
+          name: "arrow_big_left",
+          side: "left",
+        }}
+      />
+    )
+  }
+  {
+    nextUrl && (
+      <Link
+        text="Next"
+        href={nextUrl}
+        style="primary"
+        borderVisible={true}
+        isFilled={false}
+        icon={{
+          name: "arrow_big_right",
+          side: "left",
+        }}
+      />
+    )
+  }
+</nav>
