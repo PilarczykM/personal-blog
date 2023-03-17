@@ -508,8 +508,6 @@ button:focus-visible {
 }
 
 .about img {
-  border-radius: 100vmax;
-  border-radius: var(--radius-full);
   width: min(300px, 100%);
   box-shadow: 0.2px 0.5px 0.6px #8186bb40, 1.1px 2.7px 3.3px -0.4px #8186bb40,
     2.1px 5px 6.1px -0.7px #8186bb40, 3.5px 8.3px 10.1px -1.1px #8186bb40,
