@@ -3,6 +3,8 @@ import PostHeader from "@/components/PostHeader.astro";
 import { BlogPostFrontmatter, siteMetadata } from "@/data";
 
 import BaseLayout from "./BaseLayout.astro";
+import CategoryCloud from "@/components/CategoryCloud.astro";
+import RelatedPosts from "@/components/RelatedPosts.astro";
 
 const {
   frontmatter: { description, author, category, date, image, title },
@@ -25,6 +27,15 @@ const {
     <div class="content">
       <slot />
     </div>
-    <div class="sidebar"></div>
+    <div class="sidebar">
+      <aside class="container" aria-label="Blog Categories">
+        <h2 class="h3">Categories</h2>
+        <CategoryCloud />
+      </aside>
+      <aside class="container" aria-label="Related Blogs">
+        <h2 class="h3">Related blogs</h2>
+        <RelatedPosts category={category} title={title} />
+      </aside>
+    </div>
   </div>
 </BaseLayout>
